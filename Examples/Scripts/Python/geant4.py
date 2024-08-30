@@ -20,17 +20,18 @@ u = acts.UnitConstants
 
 def runGeant4( detector, trackingGeometry, field, outputDir, s: acts.examples.Sequencer = None):
     
-    s = s or acts.examples.Sequencer(events=10000, numThreads=1)
-    s.config.logLevel = acts.logging.INFO
+    s = s or acts.examples.Sequencer(events=1, numThreads=1)
+    s.config.logLevel = acts.logging.VERBOSE
     rnd = acts.examples.RandomNumbers()
 
     addParticleGun(
         s,
-        EtaConfig(-2.0, 2.0),
+        EtaConfig(-5.0, 5.0),
         rnd=rnd,
     )
 
     outputDir = Path(outputDir)
+    
     addGeant4(
         s,
         detector,
@@ -76,9 +77,9 @@ if "__main__" == __name__:
     #     runGeant4(detector, detector, field, Path.cwd()).run()
     # else:
     detector, trackingGeometry, decorators = getOpenDataDetector()
-    ## runGeant4(detector, trackingGeometry, field, Path.cwd()).run()
+    runGeant4(detector, trackingGeometry, field, Path.cwd()).run()
     
-    runGeant4(detector, trackingGeometry, field, os.getenv("MOUNT_DIR")).run()  #pass output dir
+    #runGeant4(detector, trackingGeometry, field, os.getenv("MOUNT_DIR")).run()  #pass output dir
 
 
     end_time = time.time()  
