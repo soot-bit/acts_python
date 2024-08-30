@@ -3,9 +3,9 @@ from pathlib import Path
 from enum import Enum
 import argparse
 
-import acts
-import acts.examples
-from acts.examples.odd import getOpenDataDetector
+import acts # type: ignore
+import acts.examples # type: ignore
+from acts.examples.odd import getOpenDataDetector # type: ignore
 
 u = acts.UnitConstants
 

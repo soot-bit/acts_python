@@ -7,7 +7,7 @@ from acts.examples.simulation import addParticleGun, EtaConfig, ParticleConfig
 
 
 def runParticleGun(outputDir, s=None):
-    s = s or Sequencer(events=10, numThreads=-1)
+    s = s or Sequencer(events=1000, numThreads=-1)
     s.config.logLevel = acts.logging.INFO
     outputDir = Path(outputDir)
     addParticleGun(
